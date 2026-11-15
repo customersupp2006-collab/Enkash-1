@@ -1,4 +1,3 @@
-
 {
   "name": "enkash-upi-backend",
   "version": "1.0.0",
@@ -9,9 +8,7 @@
     "dev": "node --watch server.js",
     "check": "node --check server.js && node --check provider.js"
   },
-  "engines": {
-    "node": ">=20"
-  },
+  "engines": { "node": ">=20" },
   "dependencies": {
     "express": "^4.21.2",
     "dotenv": "^16.4.7",
