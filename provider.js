@@ -1,21 +1,16 @@
 /**
- * Provider boundary. Exact EnKash request paths, auth signing, response mapping,
- * and webhook verification are NOT supplied. Fill these only from the verified
- * merchant-specific EnKash API documentation; never guess or accept unsigned webhooks.
+ * EnKash adapter boundary.
+ * Never invent provider endpoints or webhook signing algorithms.
+ * Implement these methods only after obtaining verified EnKash API documentation.
  */
-export async function createPayment({ reference, amountPaise, currency }) {
-  void reference; void amountPaise; void currency;
-  throw new Error('ENKASH_CREATE_ORDER_NOT_CONFIGURED');
-  // Expected: { providerId, intentUrls: { gpay?, phonepe?, paytm?, other? }, qrPayload? }
+export async function createPayment(_input) {
+  throw new Error('EnKash createPayment is not configured. Obtain verified API contract first.');
 }
-export async function verifyWebhook(rawBody, headers) {
-  void rawBody; void headers;
-  throw new Error('ENKASH_WEBHOOK_SIGNATURE_NOT_CONFIGURED');
-  // Expected: { reference, providerId } after cryptographic verification
+
+export async function verifyWebhook(_rawBody, _headers) {
+  throw new Error('EnKash webhook verification is not configured. Never trust unsigned callbacks.');
 }
-export async function fetchStatus(providerId) {
-  void providerId;
-  throw new Error('ENKASH_STATUS_NOT_CONFIGURED');
-  // Expected: { status: 'SUCCESS'|'PENDING'|'FAILED', reference, providerId,
-  //             amountPaise, currency: 'INR' }
+
+export async function fetchStatus(_providerId) {
+  throw new Error('EnKash transaction status verification is not configured.');
 }
